@@ -1,7 +1,7 @@
 package com.snay.cursojsf.models;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -37,7 +37,7 @@ public class Empresa implements Serializable {
 	private String cnpj;
 	
 	@Column(name = "data_fundacao")
-	private LocalDate dataFundacao;
+	private Date dataFundacao;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "tipo_empresa", nullable = false)
@@ -49,7 +49,7 @@ public class Empresa implements Serializable {
 	
 	public Empresa() {}
 
-	public Empresa(Long id, String nomeFantasia, String razaoSocial, String cnpj, LocalDate dataFundacao) {
+	public Empresa(Long id, String nomeFantasia, String razaoSocial, String cnpj, Date dataFundacao) {
 		super();
 		this.id = id;
 		this.nomeFantasia = nomeFantasia;
@@ -90,11 +90,11 @@ public class Empresa implements Serializable {
 		this.cnpj = cnpj;
 	}
 
-	public LocalDate getDataFundacao() {
+	public Date getDataFundacao() {
 		return dataFundacao;
 	}
 
-	public void setDataFundacao(LocalDate dataFundacao) {
+	public void setDataFundacao(Date dataFundacao) {
 		this.dataFundacao = dataFundacao;
 	}
 
@@ -113,7 +113,7 @@ public class Empresa implements Serializable {
 	public void setRamoAtividade(RamoAtividade ramoAtividade) {
 		this.ramoAtividade = ramoAtividade;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

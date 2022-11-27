@@ -19,14 +19,18 @@ public class EmpresaRepositorio implements Serializable {
 	public Empresa buscarPorId(Long id) {
 		return manager.find(Empresa.class, id);
 	}
-	
+	 
 	public void remover(Long id) {
 		var entity = buscarPorId(id);	
 		manager.remove(entity);
 	}
 	
+	public List<Empresa> buscarTodas() {
+		return manager.createQuery("FROM Empresa", Empresa.class).getResultList();
+	}
+	
 	public List<Empresa> pesquisar(String nomeFantasia) {
-		String hql = "SELECT e FROM Empresa e WHERE e.nomeFantasia LIKE :nomeFantasia";
+		String hql = "FROM Empresa e WHERE UPPER(e.nomeFantasia) LIKE UPPER(:nomeFantasia)";
 		
 		TypedQuery<Empresa> query = manager.createQuery(hql, Empresa.class);
 		List<Empresa> empresas = query
